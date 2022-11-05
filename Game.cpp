@@ -4,6 +4,8 @@ void Game::start()
 {
 
 
+
+
 	std::cout << "     ______     \n";
 	std::cout << "    |      |    \n";
 	std::cout << "    |      O    \n";
@@ -17,7 +19,7 @@ void Game::start()
 	std::cout << "Please enter the secert: ";
 	std::cin >> this->secert;
 
-	std::cout << clear;
+	std::cout << clearConsole;
 
 	// TO-DO: Add an option for a user to select from a pre generated list of words or if they want to use their own
 
@@ -39,6 +41,13 @@ void Game::start()
 		this->output[i] = ' ';
 
 	}
+
+	// Reset Variables
+	this->foundLetters = 0;
+	this->wrong = 0;
+	this->guesses.clear();
+	char output[sizeof(secert)];
+	this->attempts = 0;
 
 
 
@@ -124,8 +133,8 @@ void Game::guess()
 }
 
 void Game::drawPerson() {
-	std::cout << clear;
-	std::cout << "W: " << this->wrong << std::endl;
+	std::cout << clearConsole;
+	std::cout << "Incorrect:  " << this->wrong << "/6" << std::endl;
 	switch (this->wrong) {
 	case 1:
 		std::cout << "     ______     \n";
@@ -214,15 +223,15 @@ void Game::drawPerson() {
 void Game::menu()
 {
 	std::cout << "\n1. Normal";
-	std::cout << "\n2. Random";
+	std::cout << "\n2. Random\n";
 	std::cin >> this->menuIn;
 	switch (this->menuIn) {
 	case 1:
-		std::cout << clear;
+		std::cout << clearConsole;
 		start();
 		break;
 	default:
-		std::cout << clear;
+		std::cout << clearConsole;
 		menu();
 		break;
 	}
@@ -232,7 +241,7 @@ bool Game::isEndGame()
 {
 	if (attempts > 0) {
 		if (this->foundLetters == this->secert.length() && secert.length() > 0) {
-			std::cout << "\nCongratulations! You guessed the word \"" << this->secert << "\" in " << this->attempts << " attempts.";
+			std::cout << "\nCongratulations! You guessed the word \"" << this->secert << "\" with " << this->attempts << " guesses.";
 			menu();
 			return true;
 		}

@@ -6,16 +6,16 @@
 #define underlineStart "\033[4m"
 #define underlineEnd "\033[0m"
 
-#define clear "\x1B[2J\x1B[H"
-//#define clear "\n"
+#define clearConsole "\x1B[2J\x1B[H"
+//#define clearConsole "\n"
 
 class Game
 {
 
 public:
 	std::string secert;
-	unsigned int foundLetters = 0;
-	unsigned int wrong = 0;
+	unsigned int foundLetters;
+	unsigned int wrong;
 	char in;
 	int menuIn;
 	std::vector<char> guesses;
