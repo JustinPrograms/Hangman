@@ -21,6 +21,7 @@ public:
 	std::vector<char> guesses;
 	char output[sizeof(secert)];
 
+
 	unsigned int attempts = 0;
 
 	// Init public functions
@@ -30,7 +31,7 @@ public:
 	void menu();
 
 	// Accessors 
-	bool isEndGame();
+	void isEndGame();
 
 
 

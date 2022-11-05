@@ -23,15 +23,6 @@ void Game::start()
 
 	// TO-DO: Add an option for a user to select from a pre generated list of words or if they want to use their own
 
-	std::cout << "     ______     \n";
-	std::cout << "    |      |    \n";
-	std::cout << "    |           \n";
-	std::cout << "    |           \n";
-	std::cout << "    |           \n";
-	std::cout << "    |           \n";
-	std::cout << "    |           \n";
-	std::cout << "____|____       \n";
-
 
 
 
@@ -50,8 +41,9 @@ void Game::start()
 	this->attempts = 0;
 
 
+	drawPerson();
 
-	guess();
+
 
 }
 
@@ -217,6 +209,8 @@ void Game::drawPerson() {
 		std::cout << "    |           \n";
 		std::cout << "    |           \n";
 		std::cout << "____|____       \n";
+		guess();
+
 	}
 }
 
@@ -237,21 +231,18 @@ void Game::menu()
 	}
 }
 
-bool Game::isEndGame()
+void Game::isEndGame()
 {
 	if (attempts > 0) {
 		if (this->foundLetters == this->secert.length() && secert.length() > 0) {
 			std::cout << "\nCongratulations! You guessed the word \"" << this->secert << "\" with " << this->attempts << " guesses.";
 			menu();
-			return true;
 		}
 
 		if (this->attempts >= 7) {
 			std::cout << "Uh oh! You did not guess the word guessed the word. The word was " << underlineStart << this->secert << "." << underlineEnd;
 			menu();
-			return true;
 		}
 
 	}
-	return false;
 }
